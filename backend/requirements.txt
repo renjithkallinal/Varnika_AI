@@ -7,3 +7,8 @@ moviepy
 modelscope
 python-dotenv
 packaging
+pydantic
+Pillow
+flask
+torch
+opencv-python
