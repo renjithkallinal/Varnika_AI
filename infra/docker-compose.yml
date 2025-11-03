@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    container_name: varnika-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../backend/outputs:/app/outputs
+      - ../backend:/app
+    # Use NVIDIA runtime; requires NVIDIA Container Toolkit on host
+    runtime: nvidia
+    environment:
+      - FIREBASE_STORAGE_BUCKET=${FIREBASE_STORAGE_BUCKET}
+      - FIREBASE_SERVICE_ACCOUNT_PATH=/secrets/firebase-service-account.json
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    # Mount service account if using docker run or compose up with local file
+    secrets:
+      - firebase_key
+
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    container_name: varnika-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_BACKEND_URL=http://localhost:8000
+
+secrets:
+  firebase_key:
+    file: ../backend/firebase-service-account.json
