@@ -1,5 +1,10 @@
 fastapi
+diffusers
+transformers
+accelerate
+safetensors
 uvicorn[standard]
+datasets==2.16.1
 python-multipart
 moviepy
 python-dotenv
@@ -8,10 +13,11 @@ flask==3.0.3
 requests==2.32.3
 torch
 torchvision
-modelscope==1.13.3
 opencv-python==4.10.0.84
 Pillow==10.4.0
 firebase-admin==6.5.0
 packaging==24.1
 numpy==1.26.4
 tqdm==4.66.5
+imageio[ffmpeg]
+proglog
