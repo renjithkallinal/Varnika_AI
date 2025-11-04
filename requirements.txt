@@ -1,5 +1,7 @@
 fastapi
 uvicorn[standard]
+modelscope==1.11.0
+datasets==2.16.1
 python-multipart
 moviepy
 python-dotenv
