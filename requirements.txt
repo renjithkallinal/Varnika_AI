@@ -10,7 +10,6 @@ flask==3.0.3
 requests==2.32.3
 torch
 torchvision
-modelscope==1.13.3
 opencv-python==4.10.0.84
 Pillow==10.4.0
 firebase-admin==6.5.0
