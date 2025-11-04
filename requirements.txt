@@ -16,5 +16,6 @@ firebase-admin==6.5.0
 packaging==24.1
 numpy==1.26.4
 tqdm==4.66.5
-moviepy
+moviepy==1.0.3
 imageio[ffmpeg]
+proglog
