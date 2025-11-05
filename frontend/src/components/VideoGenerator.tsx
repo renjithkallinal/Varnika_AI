@@ -4,7 +4,7 @@ import axios from 'axios'
 export default function VideoGenerator() {
   const [prompt, setPrompt] = useState('')
   const [loading, setLoading] = useState(false)
-  const [imageBase64, setImageBase64] = useState('')
+  const [imageBase64, setImageBase64] = useState<string | null>(null)
 
   const generate = async () => {
     setLoading(true)
@@ -19,19 +19,23 @@ export default function VideoGenerator() {
   }
 
   return (
-    <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
-      <label className="block mb-2">Prompt</label>
+    <div>
+      <label className="block mb-2 text-sm text-gray-400">Prompt</label>
       <textarea
         value={prompt}
         onChange={e => setPrompt(e.target.value)}
-        className="w-full h-28 p-3 bg-gray-900 border border-gray-700 rounded"
-        placeholder="Describe the scene you want to generate..."
+        className="w-full h-28 p-3 bg-[#0b0b0b] border border-gray-700 rounded-md text-gray-200 placeholder-gray-500 text-sm"
+        placeholder="Describe the scene you want to create (e.g. 'a misty forest at sunrise')"
       />
 
       <button
         onClick={generate}
         disabled={loading}
-        className="mt-4 bg-indigo-600 px-4 py-2 rounded"
+        className={`mt-4 w-full py-2 rounded-md font-medium transition ${
+          loading
+            ? 'bg-gray-700 text-gray-400 cursor-not-allowed'
+            : 'bg-indigo-600 hover:bg-indigo-700 text-white'
+        }`}
       >
         {loading ? 'Generating...' : 'Generate Image'}
       </button>
@@ -41,15 +45,8 @@ export default function VideoGenerator() {
           <img
             src={`data:image/png;base64,${imageBase64}`}
             alt="Generated"
-            className="w-full rounded"
+            className="w-full rounded-lg shadow-lg border border-gray-800"
           />
-          <a
-            href={`data:image/png;base64,${imageBase64}`}
-            download="varnika_generated.png"
-            className="block mt-2 text-sm text-indigo-300"
-          >
-            Download Image
-          </a>
         </div>
       )}
     </div>
