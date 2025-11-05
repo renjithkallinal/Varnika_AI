@@ -24,8 +24,8 @@ export default function VideoGenerator() {
       <textarea
         value={prompt}
         onChange={e => setPrompt(e.target.value)}
-        className="w-full h-28 p-3 bg-[#0b0b0b] border border-gray-700 rounded-md text-gray-200 placeholder-gray-500 text-sm"
-        placeholder="Describe the scene you want to create (e.g. 'a misty forest at sunrise')"
+        className="w-full h-28 p-3 bg-[#0a0a0a] border border-gray-700 rounded-md text-gray-200 placeholder-gray-500 text-sm focus:ring-2 focus:ring-indigo-500 outline-none resize-none"
+        placeholder="Describe the scene you want to create... (e.g. 'a rainy cyberpunk street at night')"
       />
 
       <button
@@ -33,8 +33,8 @@ export default function VideoGenerator() {
         disabled={loading}
         className={`mt-4 w-full py-2 rounded-md font-medium transition ${
           loading
-            ? 'bg-gray-700 text-gray-400 cursor-not-allowed'
-            : 'bg-indigo-600 hover:bg-indigo-700 text-white'
+            ? 'bg-gray-800 text-gray-400 cursor-not-allowed'
+            : 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg shadow-indigo-900/20'
         }`}
       >
         {loading ? 'Generating...' : 'Generate Image'}
@@ -45,7 +45,7 @@ export default function VideoGenerator() {
           <img
             src={`data:image/png;base64,${imageBase64}`}
             alt="Generated"
-            className="w-full rounded-lg shadow-lg border border-gray-800"
+            className="w-full rounded-lg border border-gray-700 shadow-lg"
           />
         </div>
       )}
