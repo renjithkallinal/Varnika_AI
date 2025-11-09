@@ -1,5 +1,5 @@
-# Use NVIDIA CUDA image for GPU support (or python:3.10-slim for CPU)
-FROM nvidia/cuda:12.1.0-runtime-ubuntu22.04
+# FROM nvidia/cuda:12.1.0-runtime-ubuntu22.04
+FROM python:3.10-slim
 
 WORKDIR /app/backend
 ENV DEBIAN_FRONTEND=noninteractive
