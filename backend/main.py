@@ -7,7 +7,17 @@ import torch
 from io import BytesIO
 import base64
 
+from fastapi.middleware.cors import CORSMiddleware
+
+
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # allow Vercel
+    allow_credentials=True,
+    allow_methods=["*"],  # enables OPTIONS
+    allow_headers=["*"],
+)
 
 # Load model
 print("🔄 Loading Stable Diffusion model...")
@@ -24,6 +34,12 @@ class PromptRequest(BaseModel):
 @app.get("/")
 def home():
     return {"message": "Varnika AI Backend Running with Stable Diffusion"}
+
+
+# ✅ OPTIONS handler (CRITICAL)
+@app.options("/generate")
+async def options_generate():
+    return {}
 
 @app.post("/generate")
 def generate(req: PromptRequest):
