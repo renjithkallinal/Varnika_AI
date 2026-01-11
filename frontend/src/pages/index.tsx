@@ -127,7 +127,7 @@ async function handleUpscale() {
       <header className="text-center mt-6 mb-8">
         <h1 className="text-4xl md:text-5xl font-extrabold text-indigo-400 tracking-wide">Varnika 🎬</h1>
         <p className="mt-3 text-lg text-gray-300">
-          AI Video & Image Generator — Powered by <span className="text-indigo-500">Stable Diffusion</span>
+          AI Video & Image Generator <span className="text-indigo-500">
         </p>
       </header>
 
